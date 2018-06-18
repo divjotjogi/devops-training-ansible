@@ -1,0 +1,16 @@
+---
+ - name: We need to copy our source code to all remote servers
+   copy:
+     src: files/index.html
+     dest: /var/www/html/index.html
+
+ - name: To copy a file with dynamic content in it to remote servers
+   template:
+     src: httpd.conf.j2
+     dest: /etc/httpd/conf/httpd.conf
+
+ - name: To restart the apache webserver to apply the changes
+   service:
+     name: "{{ package }}"
+     state: restarted
+     

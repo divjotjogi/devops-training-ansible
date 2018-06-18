@@ -1,0 +1,10 @@
+---
+ - name: This playbook is will use ansible variables decleration - 1
+   hosts: webservers
+   become: True
+   vars:
+     package: vim
+
+   tasks:
+     - name: to print the value of the variable
+       debug: var=package

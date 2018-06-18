@@ -1,0 +1,19 @@
+---
+ - name: This playbook is will use ansible for loops
+   hosts: webservers
+   become: True
+   gather_facts: no
+
+   tasks:
+     - name: To always make sure my PermitRootLogin to be enabled
+       lineinfile:
+         dest: /etc/ssh/sshd_config
+         regexp: "^#PermitRootLogin"
+         line: "PermitRootLogin yes"
+         state: present
+
+     - name: copy a file from ansible server to all clients
+       copy:
+         src: /etc/ansible/ansible.cfg
+         dest: /opt/ansible.cfg
+ 

@@ -1,0 +1,6 @@
+---
+# defaults file for apache
+
+apache_log_dir: /opt/apache_logs
+apache_log_file: access.log
+apache_port: 80

@@ -1,0 +1,14 @@
+---
+ - name: This playbook is to explore ansible modules
+   hosts: webservers
+   become: True
+
+
+   tasks:
+     - name: Create a file named helloworld in /opt
+       file: path=/opt/helloworld.txt mode=0700 owner=ec2-user group=ec2-user state=touch
+
+     - name: To creata a directory ansible in /opt
+       file: path=/opt/ansible mode=0700 owner=ec2-user group=ec2-user state=directory
+
+     - file: src=/tmp/ansible dest=/opt/ansible owner=ec2-user group=ec2-user state=link force=yes

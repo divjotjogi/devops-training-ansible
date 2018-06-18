@@ -1,0 +1,13 @@
+---
+ - name: This playbook will install Apache Maven
+   hosts: webservers
+   become: True
+
+   tasks:
+     - name: To download apache maven from pache.org site
+       get_url:
+         url: http://redrockdigimark.com/apachemirror/maven/maven-3/3.5.3/binaries/apache-maven-3.5.3-bin.zip
+         dest: /opt/apache-maven-3.5.3-bin.zip
+
+     - name: To unzip the downloaded installer
+       command: unzip /opt/apache-maven-3.5.3-bin.zip

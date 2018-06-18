@@ -1,0 +1,15 @@
+---
+
+ # To include the install.yml file for the installation
+ - import_tasks: install.yml
+
+ # To include the service.yml for starting httpd
+ - import_tasks: service.yml
+
+ # To include the setup.yml for initial setup
+ - import_tasks: setup.yml
+
+ # To include the configure.yml for apache config
+ - import_tasks: configure.yml
+
+

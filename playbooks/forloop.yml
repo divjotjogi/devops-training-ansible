@@ -1,0 +1,12 @@
+---
+ - name: This playbook is will use ansible for loops
+   hosts: webservers
+   become: True
+   gather_facts: no
+
+   tasks:
+     - name: To create 2 folders in /opt location
+       file: path=/opt/{{ item }} state=directory
+       with_items: 
+         - abc
+         - xyz 

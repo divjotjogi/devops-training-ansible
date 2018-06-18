@@ -1,0 +1,29 @@
+---
+ - name: Create a Apache group in remote server for apache administration
+   group:
+     name: "{{ package }}"
+     state: present
+
+ - name: Create a user named httpd and map it to httpd group
+   user:
+     name: "{{ package }}"
+     state: present
+     groups: "{{ package }}"
+     shell: /bin/bash
+     uid: 3000
+
+ - name: To create a directory for apache logs in /opt directory
+   file:
+     state: directory
+     path: "{{ apache_log_dir }}"
+     owner: "{{ package }}"
+     group: "{{ package }}"
+     mode: 0744
+
+ - name: To create an empty log file inside the log directory
+   file:
+     state: touch
+     path: "{{ apache_log_dir }}/{{ apache_log_file }}"
+     owner: "{{ package }}"
+     group: "{{ package }}"
+     mode: 0744

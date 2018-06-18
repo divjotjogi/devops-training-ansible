@@ -1,0 +1,8 @@
+---
+ - name: This playbook will call my apache roles and execute it
+   hosts: webservers
+   become: True
+   gather_facts: True
+
+   roles:
+     - apache

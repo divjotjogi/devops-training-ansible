@@ -1,0 +1,5 @@
+---
+ - name: To Install apache web server
+   yum:
+     name: "{{ package }}"
+     state: installed

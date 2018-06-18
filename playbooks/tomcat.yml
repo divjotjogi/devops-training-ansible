@@ -1,0 +1,23 @@
+---
+ - name: This playbook will install and start apache tomcat
+   hosts: webservers
+   become: True
+
+   tasks:
+
+     - name: To download the apache tomcat installation file
+       get_url:
+         url: http://www-us.apache.org/dist/tomcat/tomcat-8/v8.5.31/bin/apache-tomcat-8.5.31.tar.gz
+         dest: /opt/apache-tomcat-8.5.31.tar.gz
+     
+     - name: To unzip and untar the apache tomcat installation files
+       command: chdir=/opt /usr/bin/tar zxf /opt/apache-tomcat-8.5.31.tar.gz -C /opt creates=/opt/apache-tomcat-8.5.31 
+
+     - name: To install java as part of tomcat dependency
+       yum:
+         name: java-1.8.0-openjdk-devel
+         state: installed
+
+     - name: To start apache tomcat
+       command: chdir=/opt/apache-tomcat-8.5.31/bin nohup /opt/apache-tomcat-8.5.31/bin/startup.sh
+         

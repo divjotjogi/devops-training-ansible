@@ -1,0 +1,23 @@
+---
+ - name: This playbook is will use ansible variables decleration - 1
+   hosts: webservers
+   become: True
+   vars:
+     package: vim
+
+   tasks:
+     - name: To print the user who is logged into the system
+       command: id root
+       register: abc
+
+     - name: to print the value of the task execution
+       debug: msg=" The information about root user is {{ abc.stdout }}"
+
+     - name: to print the value of the task execution
+       debug: msg={{ abc.stdout }}
+
+     - name: to print the value of the task execution
+       debug: var=abc
+
+     - name: to print the value of the task execution
+       debug: var=package

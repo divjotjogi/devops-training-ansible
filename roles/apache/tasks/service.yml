@@ -1,0 +1,6 @@
+---
+ - name: To start the Apache Web Server and also enable as system startup
+   service:
+     name: "{{ package }}"
+     state: started
+     enabled: yes

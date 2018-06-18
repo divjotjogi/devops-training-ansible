@@ -1,0 +1,16 @@
+---
+ - name: This playbook is will use ansible variables decleration - 1
+   hosts: webservers
+   become: True
+   vars:
+     package: ['vim', 'elinks', 'unzip']
+     filenames: ['file1.txt', 'file2.txt', 'file3.txt']
+
+   tasks:
+     - name: To install the above packages which are in package array
+       yum: name={{ item }} state=installed
+       with_items: "{{ package }}"
+
+     - name: To create 3 files part filnames array
+       file: path=/opt/{{ item }} state=file mode=0744
+       with_items: "{{ filenames }}"

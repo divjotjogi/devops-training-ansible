@@ -1,0 +1,10 @@
+---
+ - name: This playbook is will use ansible variables decleration - 1
+   hosts: webservers
+   become: True
+   vars:
+     package: vim
+
+   tasks:
+     - name: To install the vim editor in remote servers
+       yum: name={{ package }} state=installed

@@ -1,0 +1,23 @@
+---
+ - name: This playbook will print the facts which are collected as part of each playbook execution
+   hosts: webservers
+   become: True
+   gather_facts: True
+
+   tasks:
+     - name: to print the facts info which are exposed to the playbook as vairables
+       debug: var=ansible_distribution
+
+     - name: to print the facts info
+       debug: var=ansible_python
+
+     - name: to print the facts info
+       debug: var=ansible_pkg_mgr
+
+     - name: to print the facts info
+       debug: var=ansible_os_family
+
+     - name: to print the facts info
+       debug: var=ansible_nodename
+
+

@@ -1,0 +1,9 @@
+---
+ - name: This playbook is my first playbook
+   hosts: webservers
+   become: True
+
+
+   tasks:
+     - name: To create a user called goutham
+       user: name=goutham comment=DevOps uid=2000 shell=/bin/sh state=absent group=root
